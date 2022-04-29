@@ -8,16 +8,29 @@
 import SwiftUI
 import W3WSwiftApi
 
+/// shows the three words on top of each other, used in tight spaces, like on watchOS screens
+/// if the API, or SDK is provided, it can automatically show the nearest place
 @available(iOS 13.0, watchOS 6.0, *)
 public struct W3WSuVerticalWords: View {
 
+  /// the three word address
   var words: String
+  
+  /// optional: if provided, this view will lookup and show the nearest place
   let w3w: W3WProtocolV3?
+  
+  /// optional: cnearest place to show
   var nearestPlace: String?
+  
+  /// optional: colours to use, defaults are provided if missing
   var colors: W3WSuLogoColors
   
   @State var nearestPlaceLookup: String? = nil
-    
+
+  /// shows the three words on top of each other, used in tight spaces, like on watchOS screens
+  /// - parameter words: the three word address
+  /// - parameter nearestPlace: optional: cnearest place to show
+  /// - parameter colors: optional: colours to use, defaults are provided if missing
   public init(words: String?, nearestPlace: String?, colors: W3WSuLogoColors = W3WSuLogoColors()) {
     self.words = words ?? "----.----.----"
     self.w3w = nil
@@ -25,6 +38,10 @@ public struct W3WSuVerticalWords: View {
     self.colors = colors
   }
   
+  /// shows the three words on top of each other, used in tight spaces, like on watchOS screens
+  /// - parameter words: the three word address
+  /// - parameter w3w: optional: if provided, this view will lookup and show the nearest place
+  /// - parameter colors: optional: colours to use, defaults are provided if missing
   public init(words: String?, w3w: W3WProtocolV3, colors: W3WSuLogoColors = W3WSuLogoColors()) {
     self.words = words ?? "----.----.----"
     self.w3w = w3w
@@ -32,6 +49,9 @@ public struct W3WSuVerticalWords: View {
     self.colors = colors
   }
   
+  /// shows the three words on top of each other, used in tight spaces, like on watchOS screens
+  /// - parameter words: the three word address
+  /// - parameter colors: optional: colours to use, defaults are provided if missing
   public init(words: String?, colors: W3WSuLogoColors = W3WSuLogoColors()) {
     self.words = words ?? "----.----.----"
     self.w3w = nil

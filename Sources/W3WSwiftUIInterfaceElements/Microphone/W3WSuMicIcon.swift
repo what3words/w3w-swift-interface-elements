@@ -32,14 +32,10 @@ public struct W3WSuMicIcon: View {
   let ovalLower     = CGFloat(0.5)
   let strokeWidth   = CGFloat(0.05)
   
-  public init(animate: W3WSlashesState, lineColor: Color? = nil, fillColor: Color? = nil, slashesColor: Color? = nil) {
-    self.animate   = animate
-    self.lineColor = lineColor ?? W3WSuMicrophoneColors().micOn.current.suColor
-    self.fillColor = fillColor ?? Color.clear
-    self.slashesColor = slashesColor ?? W3WSuMicrophoneColors().slashes.current.suColor
-  }
-
   
+  /// shows a spinning set of red slashes to pacify the user
+  /// - parameter animate: the type of animation to show
+  /// - parameter colors: optional, the colours to use, defaults to w3w colours
   public init(animate: W3WSlashesState, colors: W3WSuMicrophoneColors? = nil) {
     self.animate   = animate
     self.lineColor = colors?.micOn.current.suColor ?? W3WSuMicrophoneColors().micOn.current.suColor
@@ -83,7 +79,7 @@ public struct W3WSuMicIcon: View {
         Path { path in path = drawLineEnds(geometry: g, path: path) }
           .fill(lineColor)
 
-        // the slashes
+        // the three slashes
         if animate == .animating {
           W3WSuSlashes(state: .animating, color: slashesColor)
             .frame(width: unit(g) * slashesWidth, height: unit(g) * slashesWidth, alignment: .center)
@@ -117,9 +113,6 @@ public struct W3WSuMicIcon: View {
     p.addLine(to: CGPoint(x: unitX(g) * centre, y: (unitY(g) * centre + unit / 2.0 - unit * stemHeight)))
     
     // cup
-    //p.move(to: CGPoint(x: unit * (centre + ovalWidth), y: unit * (ovalLower - cupRim)))
-//    p.move(to: CGPoint(x: unit * (centre + ovalWidth), y: unit * ovalLower))
-//    p.addLine(to: CGPoint(x: unit * (centre + ovalWidth), y: unit * ovalLower))
     p.move(to: CGPoint(x: unitX(g) * centre + unit * ovalWidth, y: unitY(g) * centre - unit * cupRim))
     p.addLine(to: CGPoint(x: unitX(g) * centre + unit * ovalWidth, y: unitY(g) * ovalLower))
     p.addArc(
@@ -141,7 +134,6 @@ public struct W3WSuMicIcon: View {
     let unit = unit(g)
 
     // basline ends
-    //p.move(to: CGPoint(x: unit * (baseWidth / 2.0), y: unit))
     p.move(to: CGPoint(x: unitX(g) * centre - (unit * baseWidth / 2.0), y: unitY(g) * centre + unit / 2.0))
     p.addArc(center: CGPoint(x: unitX(g) * centre - (unit * baseWidth / 2.0), y: unitY(g) * centre + unit / 2.0), radius: unit * strokeWidth / 2.0, startAngle: .radians(0.0), endAngle: .radians(2.0 * .pi), clockwise: false)
     p.addArc(center: CGPoint(x: unitX(g) * centre + (unit * baseWidth / 2.0), y: unitY(g) * centre + unit / 2.0), radius: unit * strokeWidth / 2.0, startAngle: .radians(0.0), endAngle: .radians(2.0 * .pi), clockwise: false)
@@ -151,12 +143,6 @@ public struct W3WSuMicIcon: View {
     p.addArc(center: CGPoint(x: unitX(g) * centre + unit * ovalWidth, y: unitY(g) * centre - unit * cupRim), radius: unit * strokeWidth / 2.0, startAngle: .radians(0.0), endAngle: .radians(2.0 * .pi), clockwise: false)
     p.move(to: CGPoint(x: unitX(g) * centre - unit * ovalWidth, y: unitY(g) * centre - unit * cupRim))
     p.addArc(center: CGPoint(x: unitX(g) * centre - unit * ovalWidth, y: unitY(g) * centre - unit * cupRim), radius: unit * strokeWidth / 2.0, startAngle: .radians(0.0), endAngle: .radians(2.0 * .pi), clockwise: false)
-
-    
-//    p.move(to: CGPoint(x: unit * (baseWidth / 2.0), y: unit))
-//    p.addArc(center: CGPoint(x: unit * (centre + ovalWidth), y: unit * (ovalLower - cupRim)), radius: unit * strokeWidth / 2.0, startAngle: .radians(0.0), endAngle: .radians(2.0 * .pi), clockwise: false)
-//    p.move(to: CGPoint(x: unit * (baseWidth / 2.0), y: unit))
-//    p.addArc(center: CGPoint(x: unit * (centre - ovalWidth), y: unit * (ovalLower - cupRim)), radius: unit * strokeWidth / 2.0, startAngle: .radians(0.0), endAngle: .radians(2.0 * .pi), clockwise: false)
 
     return p
   }

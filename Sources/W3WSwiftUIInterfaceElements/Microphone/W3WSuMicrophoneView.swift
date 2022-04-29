@@ -18,34 +18,45 @@ public enum W3WMicrophoneSwiftUIState {
 }
 
 
-/// Shows the microphone and diicons and text depending on if we are listening to a pick-up address or a drop-off address
+/// Shows the microphone and icons and text depending on if we are listening to a pick-up address or a drop-off address
 @available(iOS 13.0, watchOS 6.0, *)
 public struct W3WSuMicrophoneView: View {
   
+  /// the current recoring level to display on ascale of 0.0 -> `maxRecordingLevel`
   var recordingLevel: Double
+
+  /// the maximum `recordingLevel` to be expected, used with `recordingLevel` to calibrate the size of the halo
   var maxRecordingLevel: Double
+
+  /// the animation state for the slashes in the icon
   var slashesState: W3WSlashesState
-  //var lineColor: Color
-  //var slashesColor: Color
-  //var fillColor: Color
+
+  /// colour for the halo
   var haloColor: Color
+
+  /// default colour set
   var colours: W3WSuMicrophoneColors
-  var tapped: () -> () = { }
+
+  /// closure called when the user taps this item
+  var onTap: () -> () = { }
   
   var state = W3WMicrophoneSwiftUIState.idle
 
 
-  public init(state: W3WMicrophoneSwiftUIState, recordingLevel: Double, maxRecordingLevel: Double, colours: W3WSuMicrophoneColors = W3WSuMicrophoneColors(), tapped: @escaping () -> () = { } ) {
-    self.colours            = colours
+  /// Shows the microphone and icons and text depending on if we are listening to a pick-up address or a drop-off address
+  /// - paramter state: the animation state for the slashes in the icon
+  /// - paramter recordingLevel: the current recoring level to display on ascale of 0.0 -> `maxRecordingLevel`
+  /// - paramter maxrecordingLevel: the maximum `recordingLevel` to be expected, used with `recordingLevel` to calibrate the size of the halo
+  /// - paramter colors: optional, colours to use
+  /// - paramter onTap: optional, closure called when the user taps this item
+  public init(state: W3WMicrophoneSwiftUIState, recordingLevel: Double, maxRecordingLevel: Double, colors: W3WSuMicrophoneColors = W3WSuMicrophoneColors(), onTap: @escaping () -> () = { } ) {
+    self.colours            = colors
     self.state              = state
     self.recordingLevel     = recordingLevel
     self.maxRecordingLevel  = maxRecordingLevel
     self.slashesState       = state == .sending ? .animating : .slashes
-    //self.lineColor          = lineColourFromState(state: state)
-    //self.fillColor          = fillColourFromState(state: state)
-    //self.slashesColor       = slashesColourFromState(state: state)
-    self.haloColor          = colours.micHalo.current.suColor
-    self.tapped             = tapped
+    self.haloColor          = colors.micHalo.current.suColor
+    self.onTap             = onTap
   }
   
 
@@ -110,7 +121,7 @@ public struct W3WSuMicrophoneView: View {
       }
       .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
       .gesture(TapGesture().onEnded { _ in
-        tapped()
+        onTap()
       })
     }
     
@@ -126,7 +137,7 @@ public struct W3WSuMicrophoneView: View {
       }
       .frame(width: 150.0, height: 150.0, alignment: .center)
       .gesture(TapGesture().onEnded { _ in
-        tapped()
+        onTap()
       })
       Spacer()
     }

@@ -18,18 +18,11 @@ struct W3WSuMicrophoneHalo: View {
   
   /// the microphone volume 0.0->1.0 for display uses
   let volume: Double
+  
+  /// colour to use
   let color: Color
   
-  /// indicates if the mic is engaged or not
-  //let state: W3WAddressModelState
-  //var onColor: Color = W3WSettings.w3wMicOnColor
-  //var offColor: Color = W3WSettings.w3wMicOffColor
 
-//  public init(volume: Double, recording: Bool) {
-//    self.volume = volume
-//    self.recording = recording
-//  }
-  
   var body: some View {
     
     GeometryReader { geometry in
@@ -41,7 +34,6 @@ struct W3WSuMicrophoneHalo: View {
           .frame(
             width: self.scaleFactor(min: self.minCircle(frame: geometry), max: self.maxCircle(frame: geometry) * 0.3333, factor: self.volume),
             height: self.scaleFactor(min: self.minCircle(frame: geometry), max: self.maxCircle(frame: geometry) * 0.3333, factor: self.volume)
-            //height: self.scaleFactor(min: W3WSettings.micCircleHalo3Small, max: W3WSettings.micCircleHalo3Large, factor: self.volume), alignment: .center)
           )
           .opacity(0.32)
 
@@ -51,7 +43,6 @@ struct W3WSuMicrophoneHalo: View {
           .frame(
             width: self.scaleFactor(min: self.minCircle(frame: geometry), max: self.maxCircle(frame: geometry) * 0.6666, factor: self.volume),
             height: self.scaleFactor(min: self.minCircle(frame: geometry), max: self.maxCircle(frame: geometry) * 0.6666, factor: self.volume)
-            //height: self.scaleFactor(min: W3WSettings.micCircleHalo3Small, max: W3WSettings.micCircleHalo3Large, factor: self.volume), alignment: .center
           )
           .opacity(0.16)
 
@@ -61,7 +52,6 @@ struct W3WSuMicrophoneHalo: View {
           .frame(
             width: self.scaleFactor(min: self.minCircle(frame: geometry), max: self.maxCircle(frame: geometry) * 1.0, factor: self.volume),
             height: self.scaleFactor(min: self.minCircle(frame: geometry), max: self.maxCircle(frame: geometry) * 1.0, factor: self.volume)
-            //height: self.scaleFactor(min: W3WSettings.micCircleHalo3Small, max: W3WSettings.micCircleHalo3Large, factor: self.volume), alignment: .center
           )
           .opacity(0.08)
       }
@@ -112,10 +102,10 @@ struct W3WSuMicrophoneHalo: View {
 
 
 
-@available(iOS 13.0, watchOS 6.0, *)
-struct MicrophoneView_Previews: PreviewProvider {
-    static var previews: some View {
-      Group {
+//@available(iOS 13.0, watchOS 6.0, *)
+//struct MicrophoneView_Previews: PreviewProvider {
+//    static var previews: some View {
+//      Group {
 //        W3WMicrophoneHaloSwiftUI(volume: 2.0, color: W3WSettings.w3wMicOnColor)
 //          .frame(width: 400.0, height: 400.0, alignment: .center)
 //        W3WMicrophoneHaloSwiftUI(volume: 0.5, color: W3WSettings.w3wMicOnColor)
@@ -124,9 +114,9 @@ struct MicrophoneView_Previews: PreviewProvider {
 //          .frame(width: 400.0, height: 400.0, alignment: .center)
 //        W3WMicrophoneHaloSwiftUI(volume: 0.0, color: W3WSettings.w3wMicOnColor)
 //          .frame(width: 400.0, height: 400.0, alignment: .center)
-      }
-    }
-}
+//      }
+//    }
+//}
 
 
 #endif

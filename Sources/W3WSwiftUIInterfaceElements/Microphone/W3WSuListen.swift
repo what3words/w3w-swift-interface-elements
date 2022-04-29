@@ -9,21 +9,36 @@ import SwiftUI
 import W3WSwiftApi
 //import AddressValidation
 
-
+/// A view that shows an animating microphone for UI use with audio recording
 @available(iOS 13.0, watchOS 6.0, *)
 public struct W3WSuListen: View {
   
+  /// default colour set
   let colors: W3WSuMicrophoneColors
 
+  /// internal state of this component
   var state: W3WMicrophoneSwiftUIState = .idle
+  
+  /// the current recoring level to display on ascale of 0.0 -> `maxRecordingLevel`
   var recordingLevel: Double = 0.0
+  
+  /// the maximum `recordingLevel` to be expected, used with `recordingLevel` to calibrate the size of the halo
   var maxRecordingLevel: Double = 0.0
   
+  /// closure called when the user taps this item
   var onTap: () -> () = { }
+  
+  /// closure called when the user taps the cancel button
   var onCancel: () -> () = { }
   
+  /// A view that shows an animating microphone for UI use with audio recording
+  /// - parameter state: internal state of this component
+  /// - parameter recordingLevel: the current recoring level to display on ascale of 0.0 -> `maxRecordingLevel`
+  /// - parameter maxRecordingLevel: the maximum `recordingLevel` to be expected, used with `recordingLevel` to calibrate the size of the halo
+  /// - parameter colors: optional, default colour set
+  /// - parameter onTap: optional, closure called when the user taps this item
+  /// - parameter onCancel: optional, closure called when the user taps the cancel button
   public init(state: W3WMicrophoneSwiftUIState, recordingLevel: Double, maxRecordingLevel: Double, colors: W3WSuMicrophoneColors = W3WSuMicrophoneColors(), onTap: @escaping () -> () = { }, onCancel: @escaping () -> () = { }) {
-    //self.model    = model
     self.state    = state
     self.recordingLevel = recordingLevel
     self.maxRecordingLevel = maxRecordingLevel
@@ -35,6 +50,8 @@ public struct W3WSuListen: View {
   
   public var body: some View {
     ZStack {
+      
+      // message at the top, depends on the state
       VStack {
         if state == .error {
           Text("Please try again")
@@ -44,14 +61,16 @@ public struct W3WSuListen: View {
         Spacer()
       }
       
+      // the meat of this view
       VStack {
         Spacer()
-        W3WSuMicrophoneView(state: state, recordingLevel: recordingLevel, maxRecordingLevel: maxRecordingLevel, colours: colors) {
+        W3WSuMicrophoneView(state: state, recordingLevel: recordingLevel, maxRecordingLevel: maxRecordingLevel, colors: colors) {
           onTap()
         }
         Spacer()
       }
         
+      // message at the bottom of the screen, depends on state
       VStack {
         Spacer()
         if state != .idle {
@@ -73,6 +92,7 @@ public struct W3WSuListen: View {
         }
       }
       
+      // if the audio recording is finished and the data is already being sent, then we can't cancel
       if state != .sending {
         W3WSuCancelButton() {
           onCancel()
@@ -82,28 +102,7 @@ public struct W3WSuListen: View {
   }
 
   
-//  /// figure out the state for the mic given the state of the model
-//  /// - Parameters:
-//  ///     - volume: the current amplitude
-//  func micStateFromModelState(state: W3WAddressModelState) -> W3WMicrophoneSwiftUIState {
-//    return .idle
-//    if state == .communicating {
-//      return .sending
-//    } else if state == .error {
-//      return .error
-//    } else if state == .listening {
-//      if model.isRecording() {
-//        return .listening
-//      } else {
-//        return .idle
-//      }
-//    } else {
-//      return .error
-//    }
-//  }
-
 }
-
 
 
 //struct W3WListenSwiftUI_Previews: PreviewProvider {

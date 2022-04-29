@@ -33,4 +33,6 @@ A view showing a what3words mic icon
 
 A simple button used to start an audio recording.  It shows a mic icon.
 
+##### W3WSuMicrophoneView
 
+Shows the microphone and icons and text depending on if we are listening to a pick-up address or a drop-off address

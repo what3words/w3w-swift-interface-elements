@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-
+/// settings local to the microphone stuff, soon to be replaced by the w3w design library
 class W3WSuMicrophoneSettings {
   
   #if os(watchOS) || os(iOS)

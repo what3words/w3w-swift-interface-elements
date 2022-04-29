@@ -11,7 +11,7 @@
 import SwiftUI
 import W3WSwiftApi
 
-
+/// shows a single what3words style slash, usually shown with two others next to it - ///
 @available(iOS 13.0, watchOS 6.0, *)
 struct W3WSuSlash: Shape {
   var center: CGPoint
