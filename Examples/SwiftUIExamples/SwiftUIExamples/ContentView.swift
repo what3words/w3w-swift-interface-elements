@@ -8,6 +8,7 @@
 import SwiftUI
 import W3WSwiftApi
 import W3WSwiftUIInterfaceElements
+import W3WSwiftDesign
 
 
 struct ContentView: View {
@@ -15,7 +16,9 @@ struct ContentView: View {
   let api = What3WordsV3(apiKey: "YourApiKey")
   
   var body: some View {
-    ScrollView {
+    W3WColor.set(mode: .dark)
+    
+    return ScrollView {
       
       // Show some three word addresses vertically
       VStack(spacing: 24.0) {

@@ -25,13 +25,13 @@ struct W3WSuCancelButton: View {
       VStack {
         
         // the key part - the 'X'
-        Image(systemName: "xmark").foregroundColor(colors.xMarkColor.current.suColor)
+        Image(systemName: "xmark").foregroundColor(colors.cancelButton.current.suColor)
         Spacer()
         
-      }.padding(.top, 12.0)
+      }//.padding(.top, 12.0)
       Spacer()
       
-    }.padding(.leading, 12.0)
+    }//.padding(.leading, 12.0)
       .edgesIgnoringSafeArea(.all)
       .onTapGesture {
         // call the closure on tap

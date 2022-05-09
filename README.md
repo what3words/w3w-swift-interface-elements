@@ -3,7 +3,9 @@
 Overview
 --------
 
-This library contains basic UI elements for the what3words Swift libraries.  It's divided into two modules: `UIKit` and `SwiftUI`.  The UIKit one is called `W3WSwiftInterfaceElements`, and the SwiftUI is called `W3WSwiftUIInterfaceElements`
+This library contains basic UI elements for the what3words Swift libraries.  It's divided into two modules one for UIKit and one for SwiftUI.  
+
+The UIKit one is called `W3WSwiftInterfaceElements`, and the SwiftUI is called `W3WSwiftUIInterfaceElements`
 
 ### W3WSwiftInterfaceElements
 

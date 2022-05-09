@@ -7,6 +7,7 @@
 
 import SwiftUI
 import W3WSwiftApi
+import W3WSwiftDesign
 //import AddressValidation
 
 /// A view that shows an animating microphone for UI use with audio recording
@@ -14,7 +15,7 @@ import W3WSwiftApi
 public struct W3WSuListen: View {
   
   /// default colour set
-  let colors: W3WSuMicrophoneColors
+  let colors: W3WColorSet
 
   /// internal state of this component
   var state: W3WMicrophoneSwiftUIState = .idle
@@ -38,7 +39,7 @@ public struct W3WSuListen: View {
   /// - parameter colors: optional, default colour set
   /// - parameter onTap: optional, closure called when the user taps this item
   /// - parameter onCancel: optional, closure called when the user taps the cancel button
-  public init(state: W3WMicrophoneSwiftUIState, recordingLevel: Double, maxRecordingLevel: Double, colors: W3WSuMicrophoneColors = W3WSuMicrophoneColors(), onTap: @escaping () -> () = { }, onCancel: @escaping () -> () = { }) {
+  public init(state: W3WMicrophoneSwiftUIState, recordingLevel: Double, maxRecordingLevel: Double, colors: W3WColorSet = .whiteGrayRed, onTap: @escaping () -> () = { }, onCancel: @escaping () -> () = { }) {
     self.state    = state
     self.recordingLevel = recordingLevel
     self.maxRecordingLevel = maxRecordingLevel
@@ -77,7 +78,7 @@ public struct W3WSuListen: View {
           Text(state != .error ? "Say a what3words address" : "Don't say a street address,")
             .font(.footnote)
             .bold()
-            .foregroundColor(colors.text.current.suColor)
+            .foregroundColor(colors.foreground.current.suColor)
             .lineLimit(1)
             .minimumScaleFactor(0.5)
             .scaledToFit()
@@ -85,7 +86,7 @@ public struct W3WSuListen: View {
           Text(state != .error ? "eg: limit broom flip" : "we only accept what3words addresses")
             .font(.footnote)
             .fontWeight(.light)
-            .foregroundColor(colors.text.current.suColor)
+            .foregroundColor(colors.foreground.current.suColor)
             .lineLimit(1)
             .minimumScaleFactor(0.5)
             .scaledToFit()

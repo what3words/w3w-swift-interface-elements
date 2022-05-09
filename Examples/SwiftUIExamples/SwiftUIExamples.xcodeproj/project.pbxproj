@@ -15,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01CCF7542822A80400A0FE8B /* w3w-swift-design */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "w3w-swift-design"; path = "../../../../../W3WSwiftDesign/src/w3w-swift-design"; sourceTree = "<group>"; };
 		01E92DFC281AA58A00A79AF3 /* SwiftUIExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01E92DFF281AA58A00A79AF3 /* SwiftUIExamplesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExamplesApp.swift; sourceTree = "<group>"; };
 		01E92E01281AA58A00A79AF3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -76,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				01E92E0E281AA5CE00A79AF3 /* w3w-swift-interface-elements */,
+				01CCF7542822A80400A0FE8B /* w3w-swift-design */,
 			);
 			name = Packages;
 			sourceTree = "<group>";

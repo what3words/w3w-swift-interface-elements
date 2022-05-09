@@ -8,6 +8,7 @@
 
 import SwiftUI
 import W3WSwiftApi
+import W3WSwiftDesign
 
 
 public enum W3WMicrophoneSwiftUIState {
@@ -32,10 +33,10 @@ public struct W3WSuMicrophoneView: View {
   var slashesState: W3WSlashesState
 
   /// colour for the halo
-  var haloColor: Color
+  //var haloColor: Color
 
   /// default colour set
-  var colours: W3WSuMicrophoneColors
+  var colors: W3WColorSet
 
   /// closure called when the user taps this item
   var onTap: () -> () = { }
@@ -49,13 +50,13 @@ public struct W3WSuMicrophoneView: View {
   /// - paramter maxrecordingLevel: the maximum `recordingLevel` to be expected, used with `recordingLevel` to calibrate the size of the halo
   /// - paramter colors: optional, colours to use
   /// - paramter onTap: optional, closure called when the user taps this item
-  public init(state: W3WMicrophoneSwiftUIState, recordingLevel: Double, maxRecordingLevel: Double, colors: W3WSuMicrophoneColors = W3WSuMicrophoneColors(), onTap: @escaping () -> () = { } ) {
-    self.colours            = colors
+  public init(state: W3WMicrophoneSwiftUIState, recordingLevel: Double, maxRecordingLevel: Double, colors: W3WColorSet = .whiteGrayRed, onTap: @escaping () -> () = { } ) {
+    self.colors            = colors
     self.state              = state
     self.recordingLevel     = recordingLevel
     self.maxRecordingLevel  = maxRecordingLevel
     self.slashesState       = state == .sending ? .animating : .slashes
-    self.haloColor          = colors.micHalo.current.suColor
+    //self.haloColor          = colors.micHalo.current.suColor
     self.onTap             = onTap
   }
   
@@ -63,11 +64,11 @@ public struct W3WSuMicrophoneView: View {
   /// figure out the color for the mic lines given the state of the model
   /// - Parameters:
   ///     - volume: the current amplitude
-  func lineColourFromState(state: W3WMicrophoneSwiftUIState) -> Color {
+  func lineColourFromState(state: W3WMicrophoneSwiftUIState) -> W3WColor {
     if state == .error || state == .idle {
-      return colours.micOff.current.suColor
+      return colors.foreground
     } else {
-      return colours.micOn.current.suColor
+      return colors.highlight
     }
   }
   
@@ -75,11 +76,11 @@ public struct W3WSuMicrophoneView: View {
   /// figure out the color for the mic fill given the state of the model
   /// - Parameters:
   ///     - volume: the current amplitude
-  func fillColourFromState(state: W3WMicrophoneSwiftUIState) -> Color {
+  func fillColourFromState(state: W3WMicrophoneSwiftUIState) -> W3WColor {
     if state == .sending {
       return .clear
     } else {
-      return colours.micOn.current.suColor
+      return colors.highlight
     }
   }
   
@@ -87,11 +88,11 @@ public struct W3WSuMicrophoneView: View {
   /// figure out the color for the w3w slashes given the state of the model
   /// - Parameters:
   ///     - volume: the current amplitude
-  func slashesColourFromState(state: W3WMicrophoneSwiftUIState) -> Color {
+  func slashesColourFromState(state: W3WMicrophoneSwiftUIState) -> W3WColor {
     if state == .sending {
-      return colours.slashes.current.suColor
+      return colors.highlight
     } else {
-      return colours.micOff.current.suColor
+      return colors.foreground
     }
   }
   
@@ -105,17 +106,17 @@ public struct W3WSuMicrophoneView: View {
 
         if state == .error || state == .idle {
           Circle()
-            .fill(colours.micOn.current.suColor)
+            .fill(colors.highlight.current.suColor)
             .frame(width: geometry.size.width * 0.3, height: geometry.size.width * 0.3, alignment: .center)
             .offset(x: 0.0, y: min(geometry.size.height, geometry.size.width) * -0.01)
 
         } else {
-          W3WSuMicrophoneHalo(volume: self.normalizeVolume(volume: recordingLevel, maxVolume: maxRecordingLevel), color: haloColor)
+          W3WSuMicrophoneHalo(volume: self.normalizeVolume(volume: recordingLevel, maxVolume: maxRecordingLevel), color: colors.highlight.current.suColor)
             .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
             .offset(x: 0.0, y: min(geometry.size.height, geometry.size.width) * -0.01)
         }
         
-        W3WSuMicIcon(animate: slashesState, colors: colours) //(animate: slashesState, lineColor: lineColourFromState(state: state), fillColor: fillColourFromState(state: state), slashesColor: slashesColourFromState(state: state))
+        W3WSuMicIcon(animate: slashesState, colors: colors.with(foreground: lineColourFromState(state: state)).with(background: fillColourFromState(state: state)).with(highlight: slashesColourFromState(state: state))) //(animate: slashesState, lineColor: lineColourFromState(state: state), fillColor: fillColourFromState(state: state), slashesColor: slashesColourFromState(state: state))
           .frame(width: geometry.size.width * 0.18, height: geometry.size.width * 0.18, alignment: .center)
         
       }
@@ -129,10 +130,10 @@ public struct W3WSuMicrophoneView: View {
 
     VStack {
       ZStack {
-        W3WSuMicrophoneHalo(volume: self.normalizeVolume(volume: recordingLevel, maxVolume: maxRecordingLevel), color: haloColor)
+        W3WSuMicrophoneHalo(volume: self.normalizeVolume(volume: recordingLevel, maxVolume: maxRecordingLevel), color: colors.highlight.current.suColor)
           .frame(width: 128.0, height: 128.0, alignment: .center)
 
-        W3WSuMicIcon(animate: slashesState, colors: colours)
+        W3WSuMicIcon(animate: slashesState, colors: colors.with(foreground: lineColourFromState(state: state)).with(background: fillColourFromState(state: state)).with(highlight: slashesColourFromState(state: state)))
           .frame(width: 28.0, height: 28.0, alignment: .center)
       }
       .frame(width: 150.0, height: 150.0, alignment: .center)

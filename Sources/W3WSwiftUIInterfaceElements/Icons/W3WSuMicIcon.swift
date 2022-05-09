@@ -10,6 +10,7 @@
 
 import SwiftUI
 import W3WSwiftApi
+import W3WSwiftDesign
 
 
 /// shows a spinning set of red slashes to pacify the user
@@ -17,9 +18,9 @@ import W3WSwiftApi
 public struct W3WSuMicIcon: View {
     
   var animate       = W3WSlashesState.slashes
-  var lineColor     = W3WSuMicrophoneColors().micOn.current.suColor
+  var lineColor     = W3WSuIconColors().micIcon.background.current.suColor
   var fillColor     = Color.clear
-  var slashesColor  = W3WSuMicrophoneColors().slashes.current.suColor
+  var slashesColor  = W3WSuIconColors().micIcon.foreground.current.suColor
   
   let micRadius     = CGFloat(0.25)
   let baseWidth     = CGFloat(0.25)
@@ -36,11 +37,11 @@ public struct W3WSuMicIcon: View {
   /// shows a spinning set of red slashes to pacify the user
   /// - parameter animate: the type of animation to show
   /// - parameter colors: optional, the colours to use, defaults to w3w colours
-  public init(animate: W3WSlashesState, colors: W3WSuMicrophoneColors? = nil) {
+  public init(animate: W3WSlashesState, colors: W3WColorSet? = nil) {
     self.animate   = animate
-    self.lineColor = colors?.micOn.current.suColor ?? W3WSuMicrophoneColors().micOn.current.suColor
-    self.fillColor = Color.clear
-    self.slashesColor = colors?.slashes.current.suColor ?? W3WSuMicrophoneColors().slashes.current.suColor
+    self.lineColor = colors?.foreground.current.suColor ?? W3WSuIconColors().micIcon.foreground.current.suColor
+    self.fillColor = colors?.background.current.suColor ?? W3WSuIconColors().micIcon.background.current.suColor
+    self.slashesColor = colors?.highlight.current.suColor ?? W3WSuIconColors().micIcon.highlight.current.suColor
   }
 
   

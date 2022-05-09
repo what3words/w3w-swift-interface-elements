@@ -18,7 +18,7 @@ import W3WSwiftDesign
 public struct W3WSuSlashes: View {
   
   var state = W3WSlashesState.slashes
-  var color = W3WSuMicrophoneColors().micOn.current.suColor
+  var color = W3WSuIconColors().slashes.current.suColor
   
   var animateToLength = 1.0
   var animate = false
@@ -36,7 +36,7 @@ public struct W3WSuSlashes: View {
   let slashAnimaiton = Animation.timingCurve(1.0, 0.5, 0.0, 1.0, duration: 0.5)
   
   
-  public init(state: W3WSlashesState = .slashes, color: Color = W3WSuLogoColors().slashes.current.suColor) {
+  public init(state: W3WSlashesState = .slashes, color: Color = W3WSuIconColors().slashes.current.suColor) {
     self.color = color
     
     switch state {

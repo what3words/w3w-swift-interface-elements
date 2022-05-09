@@ -7,6 +7,8 @@
 
 import SwiftUI
 import W3WSwiftApi
+import W3WSwiftDesign
+
 
 /// shows the three words on top of each other, used in tight spaces, like on watchOS screens
 /// if the API, or SDK is provided, it can automatically show the nearest place
@@ -23,7 +25,7 @@ public struct W3WSuVerticalWords: View {
   var nearestPlace: String?
   
   /// optional: colours to use, defaults are provided if missing
-  var colors: W3WSuLogoColors
+  var colors: W3WColorSet
   
   @State var nearestPlaceLookup: String? = nil
 
@@ -31,7 +33,7 @@ public struct W3WSuVerticalWords: View {
   /// - parameter words: the three word address
   /// - parameter nearestPlace: optional: cnearest place to show
   /// - parameter colors: optional: colours to use, defaults are provided if missing
-  public init(words: String?, nearestPlace: String?, colors: W3WSuLogoColors = W3WSuLogoColors()) {
+  public init(words: String?, nearestPlace: String?, colors: W3WColorSet = .whiteGrayRed) {
     self.words = words ?? "----.----.----"
     self.w3w = nil
     self.nearestPlace = nearestPlace
@@ -42,7 +44,7 @@ public struct W3WSuVerticalWords: View {
   /// - parameter words: the three word address
   /// - parameter w3w: optional: if provided, this view will lookup and show the nearest place
   /// - parameter colors: optional: colours to use, defaults are provided if missing
-  public init(words: String?, w3w: W3WProtocolV3, colors: W3WSuLogoColors = W3WSuLogoColors()) {
+  public init(words: String?, w3w: W3WProtocolV3, colors: W3WColorSet = .whiteGrayRed) {
     self.words = words ?? "----.----.----"
     self.w3w = w3w
     self.nearestPlace = nil
@@ -52,7 +54,7 @@ public struct W3WSuVerticalWords: View {
   /// shows the three words on top of each other, used in tight spaces, like on watchOS screens
   /// - parameter words: the three word address
   /// - parameter colors: optional: colours to use, defaults are provided if missing
-  public init(words: String?, colors: W3WSuLogoColors = W3WSuLogoColors()) {
+  public init(words: String?, colors: W3WColorSet = .whiteGrayRed) {
     self.words = words ?? "----.----.----"
     self.w3w = nil
     self.nearestPlace = nil
@@ -62,24 +64,24 @@ public struct W3WSuVerticalWords: View {
   public var body: some View {
     HStack(alignment: .top, spacing: 0.0) {
       Text("///")
-        .foregroundColor(colors.highlightColor.current.suColor)
+        .foregroundColor(colors.highlight.current.suColor)
         .bold()
         .minimumScaleFactor(0.5)
         .padding(0.0)
       VStack(alignment: .leading, spacing: 0.0) {
         Text(getWord(from: words, number: 0) + ".\n" + getWord(from: words, number: 1) + ".\n" + getWord(from: words, number: 2))
           .bold()
-          .foregroundColor(colors.primaryTextColor.current.suColor)
+          .foregroundColor(colors.foreground.current.suColor)
           .minimumScaleFactor(0.75)
           .padding(0.0)
           //.frame(maxWidth: .infinity, alignment: .leading)
         if nearestPlace != nil {
-          Text(nearestPlace ?? "").foregroundColor(colors.secondaryTextColor.current.suColor)
+          Text(nearestPlace ?? "").foregroundColor(colors.secondary.current.suColor)
             .font(.system(size: 10.0))
             .minimumScaleFactor(0.5)
             .padding(0.0)
         } else if w3w != nil {
-          Text(nearestPlaceLookup ?? "").foregroundColor(colors.secondaryTextColor.current.suColor)
+          Text(nearestPlaceLookup ?? "").foregroundColor(colors.secondary.current.suColor)
             .font(.footnote)
             .minimumScaleFactor(0.5)
             .padding(0.0)

@@ -2,15 +2,6 @@
   "object": {
     "pins": [
       {
-        "package": "w3w-swift-design",
-        "repositoryURL": "https://github.com/what3words/w3w-swift-design.git",
-        "state": {
-          "branch": "main",
-          "revision": "9ded7fde26ec02b8964ccb125420bd22a3c49084",
-          "version": null
-        }
-      },
-      {
         "package": "w3w-swift-wrapper",
         "repositoryURL": "https://github.com/what3words/w3w-swift-wrapper.git",
         "state": {
