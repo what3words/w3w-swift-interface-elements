@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import W3WSwiftApi
 import W3WSwiftDesign
+import W3WSwiftInterfaceCommon
 
 
 /// layout and UI code for UIViews that display a three word address, such as W3WSuggestionTableViewCell and W3WSuggestionView
