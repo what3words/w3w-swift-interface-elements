@@ -12,7 +12,7 @@ import W3WSwiftInterfaceCommon
 
 public class W3WIconButton: W3WIcon {
   
-  var onTap: () -> () = { }
+  public var onTap: () -> () = { }
   
   public init(icon: W3WIconName, color: W3WColorSet = .blackGrayRed, frame: CGRect = W3WIcon.defaultFrame, padding: W3WPadding = .none, onTap: @escaping () -> () = { }) {
     self.onTap = onTap
