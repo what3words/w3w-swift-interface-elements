@@ -41,7 +41,7 @@ public class W3WIconRow: UIView {
   }
   
   
-  func getWidth() -> CGFloat {
+  public func getWidth() -> CGFloat {
     var x = 0.0
     
     for icon in icons {
