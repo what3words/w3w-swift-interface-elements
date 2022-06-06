@@ -52,7 +52,7 @@ open class W3WTableViewController<RowDataType, CellType>: UITableViewController 
   
   
   /// sets up the UI
-  override public func viewDidLoad() {
+  override open func viewDidLoad() {
     super.viewDidLoad()
     
     tableView.delegate = self
