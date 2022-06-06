@@ -67,12 +67,6 @@ extension W3WDrawList {
     .line(W3WDrawLine(start: CGPoint(x: 0.0, y: 1.0), end: CGPoint(x: 1.0, y: 0.0), color: .foreground, width: 0.05)),
   ]
 
-//  public static let test: W3WDrawList = [
-//    .line(W3WDrawLine(start: .zero, end: CGPoint(x: 1.0, y: 1.0), color: .foreground, width: 0.05)),
-//    .line(W3WDrawLine(start: CGPoint(x: 0.0, y: 1.0), end: CGPoint(x: 1.0, y: 0.0), color: .foreground, width: 0.05)),
-//    .circle(W3WDrawCircle(center: CGPoint(x: 0.5, y: 0.5), radius: 0.2, color: .highlight)),
-//    .arc(W3WDrawArc(center: CGPoint(x: 0.5, y: 0.5), radius: 0.4, start: 0.0, end: .pi, color: .highlight, width: 0.05)),
-//  ]
   
   public static let mic: W3WDrawList = [
     // base
@@ -122,20 +116,7 @@ extension W3WDrawList {
 
   
   public static let ocrOutline: W3WDrawList = .makeOcrOutline()
-//  [
-//    .line(W3WDrawLine(start: CGPoint(x: 0.0, y: 0.0), end: CGPoint(x: 0.2, y: 0.0), color: .foreground, width: 0.05)),
-//    .line(W3WDrawLine(start: CGPoint(x: 0.0, y: 0.0), end: CGPoint(x: 0.0, y: 0.2), color: .foreground, width: 0.05)),
-//
-//    .line(W3WDrawLine(start: CGPoint(x: 0.0, y: 1.0), end: CGPoint(x: 0.0, y: 0.8), color: .foreground, width: 0.05)),
-//    .line(W3WDrawLine(start: CGPoint(x: 0.0, y: 1.0), end: CGPoint(x: 0.2, y: 1.0), color: .foreground, width: 0.05)),
-//
-//    .line(W3WDrawLine(start: CGPoint(x: 1.0, y: 1.0), end: CGPoint(x: 1.0, y: 0.8), color: .foreground, width: 0.05)),
-//    .line(W3WDrawLine(start: CGPoint(x: 1.0, y: 1.0), end: CGPoint(x: 0.8, y: 1.0), color: .foreground, width: 0.05)),
-//
-//    .line(W3WDrawLine(start: CGPoint(x: 1.0, y: 0.0), end: CGPoint(x: 1.0, y: 0.2), color: .foreground, width: 0.05)),
-//    .line(W3WDrawLine(start: CGPoint(x: 1.0, y: 0.0), end: CGPoint(x: 0.8, y: 0.0), color: .foreground, width: 0.05)),
-//  ]
-  
+ 
   
   public static func makeOcrOutline(lineWidth: CGFloat = 0.05, length: CGFloat = 0.2) -> W3WDrawList {
     return [
@@ -165,8 +146,6 @@ extension W3WDrawList {
     let l2top     = CGPoint(x: 0.5 + offset + spacing,  y: verticalInset)
     let l2bottom  = CGPoint(x: 0.5 - offset + spacing, y: 1.0 - verticalInset)
 
-    //let
-    
     return [
       .line(W3WDrawLine(start: l0top, end: l0bottom, color: .highlight, width: width)),
       .circle(W3WDrawCircle(center: l0top,    radius: width / 2.0, color: .highlight)),
