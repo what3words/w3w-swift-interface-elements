@@ -85,7 +85,7 @@ public class W3WIcon: UIView {
   }
   
   
-  func uiImage() -> UIImage {
+  public func uiImage() -> UIImage {
     if #available(iOS 10.0, *) {
       let renderer = UIGraphicsImageRenderer(bounds: bounds)
       return renderer.image { rendererContext in
