@@ -9,14 +9,15 @@
 import SwiftUI
 import W3WSwiftApi
 import W3WSwiftDesign
+import W3WSwiftInterfaceCommon
 
 
-public enum W3WMicrophoneSwiftUIState {
-  case listening
-  case sending
-  case error
-  case idle
-}
+//public enum W3WVoiceViewState {
+//  case listening
+//  case sending
+//  case error
+//  case idle
+//}
 
 
 /// Shows the microphone and icons and text depending on if we are listening to a pick-up address or a drop-off address
@@ -41,7 +42,7 @@ public struct W3WSuMicrophoneView: View {
   /// closure called when the user taps this item
   var onTap: () -> () = { }
   
-  var state = W3WMicrophoneSwiftUIState.idle
+  var state = W3WVoiceViewState.idle
 
 
   /// Shows the microphone and icons and text depending on if we are listening to a pick-up address or a drop-off address
@@ -50,7 +51,7 @@ public struct W3WSuMicrophoneView: View {
   /// - paramter maxrecordingLevel: the maximum `recordingLevel` to be expected, used with `recordingLevel` to calibrate the size of the halo
   /// - paramter colors: optional, colours to use
   /// - paramter onTap: optional, closure called when the user taps this item
-  public init(state: W3WMicrophoneSwiftUIState, recordingLevel: Double, maxRecordingLevel: Double, colors: W3WColorSet = .whiteGrayRed, onTap: @escaping () -> () = { } ) {
+  public init(state: W3WVoiceViewState, recordingLevel: Double, maxRecordingLevel: Double, colors: W3WColorSet = .whiteGrayRed, onTap: @escaping () -> () = { } ) {
     self.colors            = colors
     self.state              = state
     self.recordingLevel     = recordingLevel
@@ -64,7 +65,7 @@ public struct W3WSuMicrophoneView: View {
   /// figure out the color for the mic lines given the state of the model
   /// - Parameters:
   ///     - volume: the current amplitude
-  func lineColourFromState(state: W3WMicrophoneSwiftUIState) -> W3WColor {
+  func lineColourFromState(state: W3WVoiceViewState) -> W3WColor {
     if state == .error || state == .idle {
       return colors.foreground
     } else {
@@ -76,7 +77,7 @@ public struct W3WSuMicrophoneView: View {
   /// figure out the color for the mic fill given the state of the model
   /// - Parameters:
   ///     - volume: the current amplitude
-  func fillColourFromState(state: W3WMicrophoneSwiftUIState) -> W3WColor {
+  func fillColourFromState(state: W3WVoiceViewState) -> W3WColor {
     if state == .sending {
       return .clear
     } else {
@@ -88,7 +89,7 @@ public struct W3WSuMicrophoneView: View {
   /// figure out the color for the w3w slashes given the state of the model
   /// - Parameters:
   ///     - volume: the current amplitude
-  func slashesColourFromState(state: W3WMicrophoneSwiftUIState) -> W3WColor {
+  func slashesColourFromState(state: W3WVoiceViewState) -> W3WColor {
     if state == .sending {
       return colors.highlight
     } else {

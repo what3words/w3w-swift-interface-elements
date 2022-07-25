@@ -77,6 +77,10 @@ public class W3WIcon: UIView {
     self.colors  = colors
     self.drawing = drawing
     
+    for v in subviews {
+      v.removeFromSuperview()
+    }
+    
     image = W3WDrawView(drawing: drawing, colors: colors, frame: frame.inset(by: UIEdgeInsets(top: padding.value, left: padding.value, bottom: padding.value, right: padding.value)))
 
     if let i = image {

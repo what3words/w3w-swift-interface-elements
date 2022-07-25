@@ -58,7 +58,7 @@ open class W3WTableViewController<RowDataType, CellType>: UITableViewController 
     tableView.delegate = self
 
     tableView.separatorStyle = .singleLine
-    tableView.separatorColor = W3WColor.iosTertiaryLabel.current.uiColor
+    tableView.separatorColor = W3WColor.tertiaryLabel.current.uiColor
     tableView.separatorInset = .zero
     
 //    tableView.rowHeight = UITableView.automaticDimension
@@ -70,8 +70,20 @@ open class W3WTableViewController<RowDataType, CellType>: UITableViewController 
   }
 
   
+//  public override func viewDidLayoutSubviews() {
+//    super.viewDidLayoutSubviews()
+//
+//    self.view.frame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y, width: self.view.frame.size.width, height: self.getIdealHeight())
+//  }
+
+  
   // MARK: Accessors
 
+  
+  public func getItems() -> [RowDataType] {
+    return items
+  }
+  
   
   public func set(items: [RowDataType]) {
     self.items = items
@@ -155,6 +167,21 @@ open class W3WTableViewController<RowDataType, CellType>: UITableViewController 
   public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return items.count
   }
+  
+  
+
+  // MARK: cellForRowAt
+  
+  /// make a table view cell for a new row
+//  open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//    let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "UITableViewCell")
+//
+//    let item = getItem(at: indexPath)
+//    cell.textLabel?.text = "\(indexPath.row) Override cellForRowAtIndexPath"
+//    cell.detailTextLabel?.text = String(describing: item)
+//
+//    return cell
+//  }
   
   
 }

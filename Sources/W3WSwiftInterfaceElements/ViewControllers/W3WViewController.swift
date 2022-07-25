@@ -11,9 +11,11 @@ import W3WSwiftDesign
 
 open class W3WViewController: UIViewController {
   
+  public var onDismiss: () -> () = { }
+  
   public var colors: W3WColorSet = .lightDarkMode
   var handleIndicator = W3WHandleIndicator()
-  
+  var managedViews = [W3WManagedView]()
   
   public var showHandle: Bool {
     get {
@@ -25,12 +27,40 @@ open class W3WViewController: UIViewController {
   }
   
   
+  /// determines if the vie was presented modally or as a regular view
+  func isPresentedModally() -> Bool {
+    if self.presentingViewController != nil {
+        return true
+    }
+    
+    if self.navigationController?.presentingViewController?.presentedViewController == self.navigationController {
+        return true
+    }
+    
+    if self.tabBarController?.presentingViewController?.isKind(of: UITabBarController.self) ?? false { //  isKindOfClass:[UITabBarController class]])
+        return true
+    }
+    
+    return false
+  }
+  
+  
   override open func viewDidLoad() {
+    super.viewDidLoad()
+    
     updateColors()
     
-    //if isBeingPresented {
+    if isPresentedModally() {
       view.addSubview(handleIndicator)
-    //}
+    }
+  }
+  
+  
+  public func add(view: UIView, frame: @escaping () -> (CGRect)) {
+    let managedView = W3WManagedView(view: view, frame: frame)
+    managedViews.append(managedView)
+    
+    self.view.addSubview(view)
   }
   
   
@@ -50,6 +80,16 @@ open class W3WViewController: UIViewController {
   open override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
     handleIndicator.position()
+    
+    for managedView in managedViews {
+      managedView.updatePosition()
+    }
+  }
+  
+  
+  public override func viewWillDisappear(_ animated: Bool) {
+    onDismiss()
+    super.viewWillDisappear(animated)
   }
 
 }

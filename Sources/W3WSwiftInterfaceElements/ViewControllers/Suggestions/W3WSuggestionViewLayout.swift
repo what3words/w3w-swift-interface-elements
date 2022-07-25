@@ -76,7 +76,9 @@ extension W3WSuggestionViewLayout {
     DispatchQueue.main.async {
       self.backgroundColor = self.colors.background.current.uiColor
       
-      self.wordsLabel?.textColor = self.colors.foreground.current.uiColor
+      //self.wordsLabel?.textColor = self.colors.foreground.current.uiColor
+      self.wordsLabel?.attributedText = self.slashify(words: self.suggestion?.words ?? "")
+
       self.nearestPlaceLabel?.textColor = self.colors.secondary.current.uiColor
       self.nearestPlaceLabel?.backgroundColor = .clear
       self.distanceLabel?.textColor = self.colors.secondary.current.uiColor

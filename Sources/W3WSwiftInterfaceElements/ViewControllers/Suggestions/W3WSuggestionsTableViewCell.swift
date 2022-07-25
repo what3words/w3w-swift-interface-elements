@@ -13,7 +13,7 @@ import W3WSwiftDesign
 public class W3WSuggestionsTableViewCell: UITableViewCell, W3WSuggestionViewLayout {
   //static public let cellIdentifier = "W3WSuggestionsTableViewCell"
   
-  public var colors: W3WColorSet = .lightDarkMode
+  public var colors: W3WColorSet = .blackGrayRed
   
   public var suggestion: W3WSuggestion?
   

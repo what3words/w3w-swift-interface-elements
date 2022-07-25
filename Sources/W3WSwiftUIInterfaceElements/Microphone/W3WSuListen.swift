@@ -8,7 +8,8 @@
 import SwiftUI
 import W3WSwiftApi
 import W3WSwiftDesign
-//import AddressValidation
+import W3WSwiftInterfaceCommon
+
 
 /// A view that shows an animating microphone for UI use with audio recording
 @available(iOS 13.0, watchOS 6.0, *)
@@ -18,7 +19,7 @@ public struct W3WSuListen: View {
   let colors: W3WColorSet
 
   /// internal state of this component
-  var state: W3WMicrophoneSwiftUIState = .idle
+  var state: W3WVoiceViewState = .idle
   
   /// the current recoring level to display on ascale of 0.0 -> `maxRecordingLevel`
   var recordingLevel: Double = 0.0
@@ -39,7 +40,7 @@ public struct W3WSuListen: View {
   /// - parameter colors: optional, default colour set
   /// - parameter onTap: optional, closure called when the user taps this item
   /// - parameter onCancel: optional, closure called when the user taps the cancel button
-  public init(state: W3WMicrophoneSwiftUIState, recordingLevel: Double, maxRecordingLevel: Double, colors: W3WColorSet = .whiteGrayRed, onTap: @escaping () -> () = { }, onCancel: @escaping () -> () = { }) {
+  public init(state: W3WVoiceViewState, recordingLevel: Double, maxRecordingLevel: Double, colors: W3WColorSet = .whiteGrayRed, onTap: @escaping () -> () = { }, onCancel: @escaping () -> () = { }) {
     self.state    = state
     self.recordingLevel = recordingLevel
     self.maxRecordingLevel = maxRecordingLevel

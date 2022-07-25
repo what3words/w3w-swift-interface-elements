@@ -39,6 +39,16 @@ public class W3WIconButton: W3WIcon {
   }
   
   
+//  public override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+//    return bounds.insetBy(dx: -32.0, dy: -32.0).contains(point)
+//  }
+
+  public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+    let frame = self.bounds.insetBy(dx: -20, dy: -20)
+    return frame.contains(point) ? self : nil
+  }
+  
+  
   @objc
   func didTap() {
     onTap()

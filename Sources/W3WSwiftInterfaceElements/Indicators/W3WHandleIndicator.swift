@@ -27,7 +27,7 @@ public class W3WHandleIndicator: UIView {
   public func position() {
     let indicatorSize = CGSize(width: 32.0, height: W3WPadding.thin.value)
     var indicatorX = W3WPadding.heavy.value
-    backgroundColor = W3WColor.iosTertiaryLabel.current.uiColor
+    backgroundColor = W3WColor.tertiaryLabel.current.uiColor
 
     if let parentView = superview {
       indicatorX = (parentView.frame.width - indicatorSize.width) / CGFloat(2)
