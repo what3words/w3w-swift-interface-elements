@@ -10,6 +10,7 @@ import W3WSwiftApi
 import W3WSwiftDesign
 
 
+/// A UITableViewController derived class for showing what3words addresses
 public class W3WSuggestionsTableViewController: W3WTableViewController<W3WSuggestion, W3WSuggestionsTableViewCell> {
   
   /// make a table view cell for a new row

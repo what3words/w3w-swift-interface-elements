@@ -9,7 +9,7 @@ The UIKit one is called `W3WSwiftInterfaceElements`, and the SwiftUI is called `
 
 ### W3WSwiftInterfaceElements
 
-UIKit has nothing in it yet.  
+UIKit documentation is pending.  
 
 ### W3WSwiftUIInterfaceElements
 

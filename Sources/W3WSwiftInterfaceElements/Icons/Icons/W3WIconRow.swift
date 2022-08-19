@@ -9,6 +9,7 @@ import UIKit
 import W3WSwiftDesign
 
 
+/// A collection of icons for use on the side of in a TextField or other
 public class W3WIconRow: UIView {
   
   /// the array of icons in the view
@@ -35,7 +36,6 @@ public class W3WIconRow: UIView {
   
   
   func resize() {
-    //print("---")
     iconSize = frame.height
     self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.iconSize * CGFloat(self.icons.count), height: self.iconSize)
   }

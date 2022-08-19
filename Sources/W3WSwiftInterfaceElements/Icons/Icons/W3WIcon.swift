@@ -16,6 +16,7 @@ public enum W3WIconName: String {
 }
 
 
+/// An icon made from eitehr an bitmap resource, or a W3WDrawList
 public class W3WIcon: UIView {
   
   static public let micOn   = W3WIcon(drawing: .micWithSlashes, colors: .microphoneOn)

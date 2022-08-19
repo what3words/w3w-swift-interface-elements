@@ -9,6 +9,9 @@ import UIKit
 import W3WSwiftDesign
 
 
+/// convenience class overwriting UIViewController that
+/// manages sub views.  Subviews can be passed in with
+/// a closure defining it's position
 open class W3WViewController: UIViewController {
   
   public var onDismiss: () -> () = { }
@@ -27,7 +30,7 @@ open class W3WViewController: UIViewController {
   }
   
   
-  /// determines if the vie was presented modally or as a regular view
+  /// determines if the view was presented modally or as a regular view
   func isPresentedModally() -> Bool {
     if self.presentingViewController != nil {
         return true

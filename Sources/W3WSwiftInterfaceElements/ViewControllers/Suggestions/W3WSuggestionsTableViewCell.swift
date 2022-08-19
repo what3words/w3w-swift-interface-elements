@@ -10,8 +10,9 @@ import W3WSwiftApi
 import W3WSwiftDesign
 
 
+/// A UITableViewCell for displaying a what3words address.
+/// the heavy lifting is done in W3WSuggestionViewLayout
 public class W3WSuggestionsTableViewCell: UITableViewCell, W3WSuggestionViewLayout {
-  //static public let cellIdentifier = "W3WSuggestionsTableViewCell"
   
   public var colors: W3WColorSet = .blackGrayRed
   

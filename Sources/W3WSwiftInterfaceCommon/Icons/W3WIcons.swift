@@ -10,6 +10,7 @@
 import UIKit
 
 
+/// Predefined bitmap icons
 public class W3WIcons {
   
   public static var pin      = UIImage(named: "addressValidationPinBlack", in: Bundle.module, compatibleWith: nil)

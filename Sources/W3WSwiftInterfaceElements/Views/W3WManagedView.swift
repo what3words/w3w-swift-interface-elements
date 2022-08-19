@@ -8,6 +8,7 @@
 import UIKit
 
 
+/// Holds a UIView and closure that defines its position
 public class W3WManagedView<UIType: UIView> {
   
   public var view: UIType

@@ -10,11 +10,12 @@ import W3WSwiftDesign
 
 
 
-
+/// Base protocol for a piece of a drawing
 public protocol W3WDrawElement {
 }
 
 
+/// A line
 public struct W3WDrawLine: W3WDrawElement {
   public let start: CGPoint
   public let end: CGPoint
@@ -23,6 +24,7 @@ public struct W3WDrawLine: W3WDrawElement {
 }
 
 
+/// A circle
 public struct W3WDrawCircle: W3WDrawElement {
   public let center: CGPoint
   public let radius: CGFloat
@@ -30,6 +32,7 @@ public struct W3WDrawCircle: W3WDrawElement {
 }
 
 
+/// An arc
 public struct W3WDrawArc: W3WDrawElement {
   public let center: CGPoint
   public let radius: CGFloat
@@ -40,16 +43,10 @@ public struct W3WDrawArc: W3WDrawElement {
 }
 
 
-//public struct W3WSubDrawList: W3WDrawElement {
-//  public let drawlist: W3WDrawList
-//  public let bounds: CGRect
-//}
-
-
+/// A datum that holds either a line, circle or arc
 public enum W3WDrawItem {
   case line(W3WDrawLine)
   case circle(W3WDrawCircle)
   case arc(W3WDrawArc)
-//  case drawlist(W3WSubDrawList)
 }
 

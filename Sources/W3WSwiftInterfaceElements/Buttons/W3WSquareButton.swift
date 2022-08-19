@@ -10,6 +10,7 @@ import UIKit
 import W3WSwiftDesign
 
 
+/// A w3w style square button
 public class W3WSquareButton: UIButton {
   
   public var onPress: () -> () = { }

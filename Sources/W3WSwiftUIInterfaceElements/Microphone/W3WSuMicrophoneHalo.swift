@@ -100,23 +100,4 @@ struct W3WSuMicrophoneHalo: View {
   }
 }
 
-
-
-//@available(iOS 13.0, watchOS 6.0, *)
-//struct MicrophoneView_Previews: PreviewProvider {
-//    static var previews: some View {
-//      Group {
-//        W3WMicrophoneHaloSwiftUI(volume: 2.0, color: W3WSettings.w3wMicOnColor)
-//          .frame(width: 400.0, height: 400.0, alignment: .center)
-//        W3WMicrophoneHaloSwiftUI(volume: 0.5, color: W3WSettings.w3wMicOnColor)
-//          .frame(width: 400.0, height: 400.0, alignment: .center)
-//        W3WMicrophoneHaloSwiftUI(volume: 0.25, color: W3WSettings.w3wMicOnColor)
-//          .frame(width: 400.0, height: 400.0, alignment: .center)
-//        W3WMicrophoneHaloSwiftUI(volume: 0.0, color: W3WSettings.w3wMicOnColor)
-//          .frame(width: 400.0, height: 400.0, alignment: .center)
-//      }
-//    }
-//}
-
-
 #endif

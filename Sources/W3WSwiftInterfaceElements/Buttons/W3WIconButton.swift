@@ -10,6 +10,7 @@ import W3WSwiftDesign
 import W3WSwiftInterfaceCommon
 
 
+/// a button based on W3WIcon
 public class W3WIconButton: W3WIcon {
   
   public var onTap: () -> () = { }

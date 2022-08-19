@@ -50,8 +50,3 @@ public struct W3WSuMicrophoneButtonRound: View {
 
 }
 
-//struct W3WMicrophoneButtonRoundSwiftUI_Previews: PreviewProvider {
-//    static var previews: some View {
-//      W3WMicrophoneButtonRoundSwiftUI()
-//    }
-//}

@@ -9,9 +9,11 @@ import UIKit
 import W3WSwiftDesign
 
 
-//public typealias W3WDrawList1 = [W3WDrawItem]
-
-
+/// A list of drawing elements (circle line, etc) intended as a system
+/// independant way of handling icons.  Can be employed by UIKit, or SwiftUI
+/// conforms to Sequence so this can be used in loops: `for element in list { }`
+/// has + operator for easy concatinating
+/// All drawlists limit themselves to the space: (0,0) -> (1,1)
 public struct W3WDrawList: Sequence, IteratorProtocol, ExpressibleByArrayLiteral {
 
   public typealias ArrayLiteralElement = W3WDrawItem
@@ -60,14 +62,16 @@ public struct W3WDrawList: Sequence, IteratorProtocol, ExpressibleByArrayLiteral
 }
 
 
+/// commonly used w3w drawlists such as mic icon, tripple slashes etc
 extension W3WDrawList {
   
+  /// test & debug
   public static let x: W3WDrawList = [
     .line(W3WDrawLine(start: .zero, end: CGPoint(x: 1.0, y: 1.0), color: .foreground, width: 0.05)),
     .line(W3WDrawLine(start: CGPoint(x: 0.0, y: 1.0), end: CGPoint(x: 1.0, y: 0.0), color: .foreground, width: 0.05)),
   ]
-
   
+  /// microphone icon
   public static let mic: W3WDrawList = [
     // base
     .line(W3WDrawLine(start: CGPoint(x: 0.37,  y: 0.975), end: CGPoint(x: 0.63, y: 0.975), color: .foreground, width: 0.05)),
@@ -96,6 +100,7 @@ extension W3WDrawList {
   ]
 
 
+  /// filled background for a mic icon
   public static let micFill: W3WDrawList = [
     // oval bottom
     .circle(W3WDrawCircle(center: CGPoint(x: 0.50,  y: 0.50), radius: 0.25, color: .foreground)),
@@ -108,6 +113,7 @@ extension W3WDrawList {
   ]
 
   
+  /// slashes that go inside the mic icon
   public static let micSlashes: W3WDrawList = [
     .line(W3WDrawLine(start: CGPoint(x: 0.54,  y: 0.275), end: CGPoint(x: 0.46, y: 0.525), color: .highlight, width: 0.05)),
     .circle(W3WDrawCircle(center: CGPoint(x: 0.54, y: 0.275), radius: 0.025, color: .highlight)),
@@ -123,17 +129,21 @@ extension W3WDrawList {
 
   ]
 
+  /// circle to go around a mic icon
   public static let micCircle: W3WDrawList = [
     .circle(W3WDrawCircle(center: CGPoint(x: 0.50,  y: 0.50), radius: 0.2, color: .background)),
   ]
   
+  /// mic icon with the slashes inside
   public static let micWithSlashes: W3WDrawList = .mic + .micSlashes
 
+  /// mic icon filled, with slashes
   public static let micFilledWithSlashes: W3WDrawList = .micFill + .mic + .micSlashes
   
+  /// corners of the OCR icon
   public static let ocrOutline: W3WDrawList = .makeOcrOutline()
  
-  
+  // makes an OCR icon corners
   public static func makeOcrOutline(lineWidth: CGFloat = 0.05, length: CGFloat = 0.2) -> W3WDrawList {
     return [
       .line(W3WDrawLine(start: CGPoint(x: 0.0, y: 0.0), end: CGPoint(x: length, y: 0.0), color: .foreground, width: lineWidth)),
@@ -151,6 +161,7 @@ extension W3WDrawList {
   }
   
   
+  /// w3w slashes
   public static func makeSlashes(offset: CGFloat = 0.1, spacing: CGFloat = 0.3, width: CGFloat = 0.1, verticalInset: CGFloat = 0.2) -> W3WDrawList {
     
     let l0top     = CGPoint(x: 0.5 + offset,  y: verticalInset)
@@ -178,9 +189,11 @@ extension W3WDrawList {
   }
   
   
+  /// ocr icon, corners and slashes
   public static let ocr = .makeOcrOutline(lineWidth: 0.1, length: 0.25) + .makeSlashes(offset: 0.075, spacing: 0.175, width: 0.06, verticalInset: 0.28)
   
   
+  /// halo for mic icon
   public static func halo(radius: CGFloat, center: CGPoint = CGPoint(x: 0.5, y: 0.5)) -> W3WDrawList {
     return [
       .circle(W3WDrawCircle(center: center, radius: radius * 1.000, color: .background)),

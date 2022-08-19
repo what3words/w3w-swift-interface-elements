@@ -8,6 +8,7 @@
 import UIKit
 
 
+/// UISearchController overwritten for what3words display needs
 open class W3WSearchController: UISearchController, UISearchControllerDelegate, UISearchBarDelegate, UISearchTextFieldDelegate {
 
   // MARK: Vars
@@ -21,6 +22,8 @@ open class W3WSearchController: UISearchController, UISearchControllerDelegate, 
   open override func viewDidLoad() {
     super.viewDidLoad()
 
+    searchBar.keyboardType = .URL
+    
     delegate = self
     searchBar.delegate = self
   }
@@ -48,29 +51,6 @@ open class W3WSearchController: UISearchController, UISearchControllerDelegate, 
     
     return allowTextChange
   }
-
-  
-//  func searchDisplayController(_ controller: UISearchDisplayController, didShowSearchResultsTableView tableView: UITableView) {
-//    tableView.frame = self.
-//  }
-
-//  - (void)searchDisplayController:(UISearchDisplayController *)controller didShowSearchResultsTableView:(UITableView *)tableView  {
-//    tableView.frame = self.myTable.frame;
-//  }
-  
-//  public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-//    if let v = self.parent as? W3WViewController {
-//      v.showHandle = true
-//    }
-//  }
-
-
-  /// called when the search bar text changes
-//  public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//    print(searchText)
-////    searchBar.text = autoSuggestViewController.groom(text: searchBar.text)
-////    textChanged(searchBar.text)
-//  }
 
 
 }

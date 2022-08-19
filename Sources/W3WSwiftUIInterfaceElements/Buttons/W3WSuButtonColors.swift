@@ -28,23 +28,3 @@ public class W3WSuButtonColors {
   )
 }
 
-
-//public class W3WSuMicrophoneButtonColor: W3WColorForeBackground {
-//  public override init(
-//    foreground: W3WColor = W3WColor.ctaBodyBackground3,
-//    background: W3WColor = W3WColor.ctaBodyText1
-//  ) {
-//    super.init(foreground: foreground, background: background)
-//  }
-//}
-//
-//
-//public class W3WSuCancelButtonColor: W3WSuColorForeground {
-//  public override init(
-//    foreground: W3WColor = W3WColor(all: W3WCoreColor.init(grey: 0.5, alpha: 0.8))
-//  ) {
-//    super.init(foreground: foreground)
-//  }
-//}
-
-

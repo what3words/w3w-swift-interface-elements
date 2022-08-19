@@ -12,7 +12,7 @@ import W3WSwiftDesign
 import W3WSwiftInterfaceCommon
 
 
-
+/// A microphone view 
 open class W3WMicWithHaloView: UIView { //}, W3WOptionAcceptorProtocol {
     
   // MARK: Vars
@@ -168,102 +168,3 @@ open class W3WMicWithHaloView: UIView { //}, W3WOptionAcceptorProtocol {
 
 
 
-//    // remember the min and max values
-//    if volume > maxVolume { maxVolume = volume }
-//    if volume < minVolume { minVolume = volume }
-//
-//    maxVolume = maxVolume * 0.95
-//    if maxVolume < 0.1 {
-//      maxVolume = 0.1
-//    }
-//
-//    if maxVolume == minVolume { maxVolume += 0.1 } // never end up with devide by zero (see next line)
-//
-//    // figure out a good number between zero and one to represent the current volume, given the max values
-//    let range = maxVolume - minVolume
-//    let normalizedVolume = (volume - minVolume) / (range - minVolume)
-//
-//    // the targetVolume it where the animation will try to get to (by incrementing 'self.volume'
-//    targetVolume = state == .listening ? normalizedVolume : 0.0
-//
-//    // update the halo
-//    halo.view.set(drawing: .halo(radius: normalizedVolume), colors: .halo)
-//    setNeedsDisplay()
-
-  
-  // MARK: Graphics
-  
-  
-//  /// draw the microphone
-//  public override func draw(_ rect: CGRect) {
-//
-//    // gets a radius for the innermost circle
-//    let radius = chooseRadius()
-//
-//    // find the centre
-//    let centre = CGPoint(x:rect.size.width / 2.0, y:rect.size.height / 2.0)
-//
-//    // figure out how much room there is for the halo
-//    var maxRadius = min(frame.size.width, frame.size.height) / 2.0
-//    if maxRadius > 216.0 {
-//      maxRadius = 216.0
-//    }
-//    let fanRoom = maxRadius - radius
-//
-//    let fanSpread = volumeToFanSpread()
-//
-//    // draw the four circles and the icon on top
-//    //circle(centre: centre, radius: radius + fanRoom * fanSpread * 0.9, colour: engaged ? W3WSettings.color(named: "MicOnColor").withAlphaComponent(0.2) : W3WSettings.color(named: "MicOffColor"))
-//    //circle(centre: centre, radius: radius + fanRoom * fanSpread * 0.6, colour: engaged ? W3WSettings.color(named: "MicOnColor").withAlphaComponent(0.3) : W3WSettings.color(named: "MicOffColor"))
-//    //circle(centre: centre, radius: radius + fanRoom * fanSpread * 0.3, colour: engaged ? W3WSettings.color(named: "MicOnColor").withAlphaComponent(0.4) : W3WSettings.color(named: "MicOffColor"))
-//    //circle(centre: centre, radius: radius, colour: engaged ? W3WSettings.color(named: "MicOnColor") : W3WSettings.color(named: "MicOffColor"))
-//    //voiceIcon(centre: centre, radius: radius / 2.2, colour: engaged ? W3WSettings.color(named: "MicOffColor") : W3WSettings.color(named: "MicOnColor"))
-//  }
-//
-//
-//  /// gets a radius for the innermost circle, ideally at the set size, but smaller if that doesn't fit
-//  func chooseRadius() -> CGFloat {
-//    var radius = idealRadius
-//
-//    // if ideaRadius is too small, use a quarter of the smallest view size
-//    if idealRadius > min(frame.size.width, frame.size.height) / 4.0 {
-//      radius = min(frame.size.width, frame.size.height) / 4.0
-//    }
-//
-//    return radius
-//  }
-//
-//
-//  func volumeToFanSpread() -> CGFloat {
-//    let ex = -5.0 * (volume * 2.0 - 1.0)
-//    let denominator = 1.0 + exp(ex)
-//    return 1.0 / denominator
-//  }
-  
-
-///// sets all the options to use in voice recognition
-///// - Parameters:
-/////     - options: an array of W3WOption
-//public func set(options: [W3WOption]) {
-//  self.options = options
-//}
-//
-//
-///// sets all the options to use in voice recognition
-///// TODO: move W3WOptionAcceptorProtocol into Api, and use it and remove this
-///// - Parameters:
-/////     - options: a W3WOptions object
-//public func set(options: W3WOptions) {
-//  self.options = options.options
-//}
-//
-//
-///// assigns an array of options to use on autosuggest calls
-///// TODO: move W3WOptionAcceptorProtocol into Api, and use it and remove this
-///// - Parameters:
-/////     - options: a single W3WOption
-//public func set(options: W3WOption) {
-//  set(options: [options])
-//}
-//
-//

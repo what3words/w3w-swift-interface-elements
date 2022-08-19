@@ -56,9 +56,4 @@ public class W3WSuMicrophoneColors {
     dark: W3WCoreColor(red: 256/256,  green: 256/256,  blue: 256/256)
   )
   
-//  public var buttonBackground = W3WColor(
-//    light: W3WCoreColor(hex: 0x31383D),
-//    dark: W3WCoreColor(hex: 0x31383D)
-//  )
-
 }

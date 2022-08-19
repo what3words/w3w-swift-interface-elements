@@ -10,6 +10,8 @@ import UIKit
 import W3WSwiftDesign
 
 
+/// A little dash ---- at the top of a view to indicate to the user
+/// that it can be pulled down to be dismissed
 public class W3WHandleIndicator: UIView {
   
   public override init(frame: CGRect) {

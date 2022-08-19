@@ -11,6 +11,7 @@ import W3WSwiftInterfaceCommon
 //import W3WSwiftComponents
 
 
+/// Takes a W3WDrawList and renders it into this UIView
 public class W3WDrawView: UIView {
 
   /// instructions on how to draw the thing

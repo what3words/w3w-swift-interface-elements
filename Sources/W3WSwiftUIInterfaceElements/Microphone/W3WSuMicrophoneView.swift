@@ -12,13 +12,6 @@ import W3WSwiftDesign
 import W3WSwiftInterfaceCommon
 
 
-//public enum W3WVoiceViewState {
-//  case listening
-//  case sending
-//  case error
-//  case idle
-//}
-
 
 /// Shows the microphone and icons and text depending on if we are listening to a pick-up address or a drop-off address
 @available(iOS 13.0, watchOS 6.0, *)

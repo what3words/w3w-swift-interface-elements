@@ -9,22 +9,21 @@ import UIKit
 import W3WSwiftDesign
 
 
+/// Given a three word address, this is a UILabel that renders it correctly with slashes and colours
 public class W3WWordsView: UILabel {
   
-  
-  var colors: W3WColorSet = .blackGrayRed
+  var colors: W3WColorSet = .darkBlueGrayRed
   var padding: W3WPadding = .bold
-  //var font: UIFont = .systemFont(ofSize: 17.0, weight: .bold)
 
 
-  public init(words: String = "---.---.---", colors: W3WColorSet = .blackGrayRed, font: UIFont? = nil) {
+  public init(words: String = "---.---.---", colors: W3WColorSet = .darkBlueGrayRed, font: UIFont? = nil) {
     self.colors = colors
     super.init(frame: .w3wWhatever)
     set(words: words, font: font)
   }
   
   
-  public init(frame: CGRect, words: String = "---.---.---", colors: W3WColorSet = .blackGrayRed, font: UIFont? = nil) {
+  public init(frame: CGRect, words: String = "---.---.---", colors: W3WColorSet = .darkBlueGrayRed, font: UIFont? = nil) {
     self.colors = colors
     super.init(frame: frame)
     set(words: words, font: font)
@@ -38,8 +37,8 @@ public class W3WWordsView: UILabel {
   
   
   func set(words: String, font: UIFont? = nil) {
-    let slashes = W3WString("///", colour: colors.highlight, font: font)
-    let twa = W3WString(words, colour: colors.foreground, font: font)
+    let slashes = W3WString("///", color: colors.highlight, font: font)
+    let twa = W3WString(words, color: colors.foreground, font: font)
     
     attributedText = (slashes + twa).asAttributedString()
     backgroundColor = colors.background.current.uiColor

@@ -8,6 +8,7 @@
 import Foundation
 
 
+/// state of the mic view
 public enum W3WVoiceViewState {
   case listening
   case sending
